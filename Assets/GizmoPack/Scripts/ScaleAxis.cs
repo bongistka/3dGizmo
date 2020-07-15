@@ -5,14 +5,14 @@ using UnityEngine;
 public class ScaleAxis : Axis
 {
     private Vector3 startPosition;
-    private GameObject axisScaleObject;
+    private Transform axisScaleObject;
     private float axisLength = 0.01f;
 
     // Start is called before the first frame update
     void Start()
     {
         InitAxis();
-        axisScaleObject = transform.parent.GetChild(0).gameObject;
+        axisScaleObject = transform.parent.GetChild(0);
     }
 
     // Update is called once per frame
@@ -20,6 +20,7 @@ public class ScaleAxis : Axis
     {
         
     }
+
     private void OnMouseDown()
     {
         startPosition = transform.position;
@@ -31,6 +32,11 @@ public class ScaleAxis : Axis
         Vector3 mousePos = Input.mousePosition;
         Vector3 delta, pos;
         mousePos = UpdateMouseDrag(mousePos, out delta, out pos);
+
+        float dist = 0.0f;
+        float scaleFactor = 0.0f;
+
+        Vector3 scale = axisScaleObject.localScale;
 
         switch (axis)
         {
@@ -45,7 +51,12 @@ public class ScaleAxis : Axis
                 break;
         }
 
+        dist = this.transform.localPosition.y - axisScaleObject.transform.localPosition.y;
+        scaleFactor = dist / axisLength;
+        scale.y = scaleFactor;
+
         transform.position = pos;
+        axisScaleObject.localScale = scale;
 
         lastMousePos = Camera.main.ScreenToWorldPoint(mousePos);
     }
@@ -54,5 +65,6 @@ public class ScaleAxis : Axis
     {
         gizmoController.ReleaseController();
         transform.position = startPosition;
+        axisScaleObject.localScale = Vector3.one;
     }
 }

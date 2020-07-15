@@ -39,7 +39,7 @@ public class ScaleAxis : Axis
                 break;
         }
 
-        root.transform.position = pos;
+        transform.position = pos;
 
         lastMousePos = Camera.main.ScreenToWorldPoint(mousePos);
     }

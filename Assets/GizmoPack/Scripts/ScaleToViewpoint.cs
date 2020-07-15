@@ -8,6 +8,7 @@ public class ScaleToViewpoint : MonoBehaviour
 	public float scaleFactor;
 
 	public float objectSize = 10.0f;
+	public float scrollPrecision = 10.0f;
 
 	private Vector3 defaultScale;
 	private Camera defaultCamera;
@@ -25,5 +26,10 @@ public class ScaleToViewpoint : MonoBehaviour
 		distanceFromCamera = (transform.position - defaultCamera.transform.position).magnitude;
 		scaleFactor = distanceFromCamera * objectSize;
 		transform.localScale = defaultScale * scaleFactor;
+
+		if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+		{
+			objectSize += Input.GetAxis("Mouse ScrollWheel")* scrollPrecision;
+		}
 	}
 }

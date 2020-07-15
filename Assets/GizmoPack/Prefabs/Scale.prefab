@@ -80,6 +80,7 @@ MonoBehaviour:
   distanceFromCamera: 0
   scaleFactor: 0
   objectSize: 10
+  scrollPrecision: 10
 --- !u!1 &2135129198050465321
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +224,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7d13cd2d5a1c7d9449be7a2de21a6e0f, type: 2}
+    - target: {fileID: 884462436107955883, guid: efa32483dc856aa438c596b08a46c841,
+        type: 3}
+      propertyPath: axis
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1636964692615780008, guid: efa32483dc856aa438c596b08a46c841,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -308,6 +314,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2637202788132309370}
     m_Modifications:
+    - target: {fileID: 884462436107955883, guid: efa32483dc856aa438c596b08a46c841,
+        type: 3}
+      propertyPath: axis
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1636964692615780008, guid: efa32483dc856aa438c596b08a46c841,
         type: 3}
       propertyPath: m_LocalPosition.x

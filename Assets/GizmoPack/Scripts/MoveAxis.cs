@@ -4,20 +4,11 @@ using UnityEngine;
 
 public class MoveAxis : Axis
 {
-    private Vector3 lastMousePos;
-
-    [HideInInspector]
-    public GameObject root;
-
-    private ScaleToViewpoint scaleToViewpoint;
-    private GizmoController gizmoController;
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        scaleToViewpoint = transform.parent.parent.GetComponent<ScaleToViewpoint>();
-        root = scaleToViewpoint.transform.parent.gameObject;
-        gizmoController = root.GetComponent<GizmoController>();
+        InitAxis();
     }
 
     // Update is called once per frame
@@ -28,23 +19,15 @@ public class MoveAxis : Axis
 
     private void OnMouseDown()
     {
-        gizmoController.InitializeController();
-
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = scaleToViewpoint.distanceFromCamera;
-        lastMousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        StartMouseDrag();
     }
 
     private void OnMouseDrag()
     {
         Vector3 mousePos = Input.mousePosition;
-        mousePos.z = scaleToViewpoint.distanceFromCamera;
+        Vector3 delta, pos;
+        mousePos = UpdateMouseDrag(mousePos, out delta, out pos);
 
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
-        Vector3 delta = worldPosition - lastMousePos;
-        Vector3 pos = transform.position;
-
-        
         switch (axis)
         {
             case GizmoAxis.xAxis:
@@ -62,6 +45,7 @@ public class MoveAxis : Axis
 
         lastMousePos = Camera.main.ScreenToWorldPoint(mousePos);
     }
+
     private void OnMouseUp()
     {
         gizmoController.ReleaseController();

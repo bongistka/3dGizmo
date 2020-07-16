@@ -20,6 +20,10 @@ public class Axis : MonoBehaviour
     protected ScaleToViewpoint scaleToViewpoint;
     protected GizmoController gizmoController;
 
+    protected Vector3 mousePos, scale, worldPosition, delta, pos;
+    protected float dist, scaleFactor;
+
+
     protected virtual void InitAxis()
     {
         scaleToViewpoint = transform.parent.parent.GetComponent<ScaleToViewpoint>();
@@ -31,18 +35,31 @@ public class Axis : MonoBehaviour
     {
         gizmoController.InitializeController();
 
-        Vector3 mousePos = Input.mousePosition;
+        mousePos = Input.mousePosition;
         mousePos.z = scaleToViewpoint.distanceFromCamera;
         lastMousePos = Camera.main.ScreenToWorldPoint(mousePos);
     }
 
-    protected virtual Vector3 UpdateMouseDrag(Vector3 mousePos, out Vector3 delta, out Vector3 pos)
+    protected virtual void UpdateMouseDrag()
     {
+        mousePos = Input.mousePosition;
         mousePos.z = scaleToViewpoint.distanceFromCamera;
 
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
+        worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
         delta = worldPosition - lastMousePos;
         pos = transform.position;
-        return mousePos;
+
+        switch (axis)
+        {
+            case GizmoAxis.xAxis:
+                pos += transform.up * delta.x;
+                break;
+            case GizmoAxis.yAxis:
+                pos += transform.up * delta.y;
+                break;
+            case GizmoAxis.zAxis:
+                pos += transform.up * delta.z;
+                break;
+        }
     }
 }

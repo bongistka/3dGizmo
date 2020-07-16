@@ -18,22 +18,7 @@ public class MoveAxis : Axis
 
     private void OnMouseDrag()
     {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 delta, pos;
-        mousePos = UpdateMouseDrag(mousePos, out delta, out pos);
-
-        switch (axis)
-        {
-            case GizmoAxis.xAxis:
-                pos += transform.up * delta.x;
-                break;
-            case GizmoAxis.yAxis:
-                pos += transform.up * delta.y;
-                break;
-            case GizmoAxis.zAxis:
-                pos += transform.up * delta.z;
-                break;
-        }
+        UpdateMouseDrag();
 
         root.transform.position = pos;
 

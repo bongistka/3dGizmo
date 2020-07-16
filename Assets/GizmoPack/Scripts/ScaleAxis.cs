@@ -23,26 +23,11 @@ public class ScaleAxis : Axis
 
     private void OnMouseDrag()
     {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 delta, pos;
-        mousePos = UpdateMouseDrag(mousePos, out delta, out pos);
-        Vector3 scale = axisScaleObject.localScale;
+        scale = axisScaleObject.localScale;
+        UpdateMouseDrag();
 
-        switch (axis)
-        {
-            case GizmoAxis.xAxis:
-                pos += transform.up * delta.x;
-                break;
-            case GizmoAxis.yAxis:
-                pos += transform.up * delta.y;
-                break;
-            case GizmoAxis.zAxis:
-                pos += transform.up * delta.z;
-                break;
-        }
-
-        float dist = transform.localPosition.y - axisScaleObject.transform.localPosition.y;
-        float scaleFactor = dist / axisLength;
+        dist = transform.localPosition.y - axisScaleObject.transform.localPosition.y;
+        scaleFactor = dist / axisLength;
         scale.y = scaleFactor;
 
         transform.position = pos;

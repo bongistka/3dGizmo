@@ -31,13 +31,13 @@ public class ScaleAxis : Axis
         switch (axis)
         {
             case GizmoAxis.xAxis:
-                pos.x += delta.x;
+                pos += transform.up * delta.x;
                 break;
             case GizmoAxis.yAxis:
-                pos.y += delta.y;
+                pos += transform.up * delta.y;
                 break;
             case GizmoAxis.zAxis:
-                pos.z += delta.z;
+                pos += transform.up * delta.z;
                 break;
         }
 

@@ -5,7 +5,8 @@ using UnityEngine;
 public class GizmoController : MonoBehaviour
 {
     public GameObject[] controlledObjects;
-    private Transform gizmoParent;
+    [HideInInspector]
+    public Transform gizmoParent;
 
     // Start is called before the first frame update
     void Start()

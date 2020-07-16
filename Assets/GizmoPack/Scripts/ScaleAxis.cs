@@ -32,10 +32,6 @@ public class ScaleAxis : Axis
         Vector3 mousePos = Input.mousePosition;
         Vector3 delta, pos;
         mousePos = UpdateMouseDrag(mousePos, out delta, out pos);
-
-        float dist = 0.0f;
-        float scaleFactor = 0.0f;
-
         Vector3 scale = axisScaleObject.localScale;
 
         switch (axis)
@@ -51,12 +47,14 @@ public class ScaleAxis : Axis
                 break;
         }
 
-        dist = this.transform.localPosition.y - axisScaleObject.transform.localPosition.y;
-        scaleFactor = dist / axisLength;
+        float dist = transform.localPosition.y - axisScaleObject.transform.localPosition.y;
+        float scaleFactor = dist / axisLength;
         scale.y = scaleFactor;
 
         transform.position = pos;
         axisScaleObject.localScale = scale;
+
+        UpdateParentScale(scaleFactor);
 
         lastMousePos = Camera.main.ScreenToWorldPoint(mousePos);
     }
@@ -66,5 +64,26 @@ public class ScaleAxis : Axis
         gizmoController.ReleaseController();
         transform.position = startPosition;
         axisScaleObject.localScale = Vector3.one;
+        gizmoController.gizmoParent.transform.localScale = Vector3.one;
+    }
+
+    private void UpdateParentScale(float scaleFactor)
+    {
+        Vector3 scale = gizmoController.gizmoParent.transform.localScale;
+
+        switch (axis)
+        {
+            case GizmoAxis.xAxis:
+                scale.x = scaleFactor;
+                break;
+            case GizmoAxis.yAxis:
+                scale.y = scaleFactor;
+                break;
+            case GizmoAxis.zAxis:
+                scale.z = scaleFactor;
+                break;
+        }
+        
+        gizmoController.gizmoParent.transform.localScale = scale;
     }
 }

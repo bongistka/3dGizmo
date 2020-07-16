@@ -11,12 +11,6 @@ public class MoveAxis : Axis
         InitAxis();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnMouseDown()
     {
         StartMouseDrag();

@@ -15,12 +15,6 @@ public class ScaleAxis : Axis
         axisScaleObject = transform.parent.GetChild(0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnMouseDown()
     {
         startPosition = transform.position;

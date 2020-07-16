@@ -12,12 +12,6 @@ public class RotateAxis : Axis
         InitAxis();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnMouseDown()
     {
         StartMouseDrag();
@@ -49,7 +43,6 @@ public class RotateAxis : Axis
     private void OnMouseUp()
     {
         gizmoController.ReleaseController();
-        if (gizmoController.isGlobal) root.transform.rotation = Quaternion.identity;
     }
 
     protected override void StartMouseDrag()

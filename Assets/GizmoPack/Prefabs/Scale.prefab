@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlledObjects: []
-  isGlobal: 0
+  isGlobal: 1
   gizmoParent: {fileID: 0}
 --- !u!1001 &380106951309422586
 PrefabInstance:

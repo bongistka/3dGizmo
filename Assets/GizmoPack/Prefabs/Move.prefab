@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlledObjects: []
-  isGlobal: 0
+  isGlobal: 1
   gizmoParent: {fileID: 0}
 --- !u!1 &34506981862555339
 GameObject:

@@ -33,7 +33,7 @@ public class Transformable : MonoBehaviour
         }
     }
 
-    private void InitGizmo(GameObject gizmoObject, GameObject controlledObject)
+    public void InitGizmo(GameObject gizmoObject, GameObject controlledObject)
     {
         Destroy(currentGizmo);
         currentGizmo = GameObject.Instantiate(gizmoObject, transform.position, transform.rotation);

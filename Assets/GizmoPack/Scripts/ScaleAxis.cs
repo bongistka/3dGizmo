@@ -41,6 +41,7 @@ public class ScaleAxis : Axis
     private void OnMouseUp()
     {
         gizmoController.ReleaseController();
+        ReleaseHoverMaterial();
         transform.position = startPosition;
         axisScaleObject.localScale = Vector3.one;
         gizmoController.gizmoParent.transform.localScale = Vector3.one;

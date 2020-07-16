@@ -5,6 +5,7 @@ using UnityEngine;
 public class RotateAxis : Axis
 {
     public float rotationSensitivity = 0.4f;
+    private Vector3 rotation;
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +20,30 @@ public class RotateAxis : Axis
 
     private void OnMouseDrag()
     {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 delta = (mousePos - lastMousePos);
-        Vector3 rotation = Vector3.zero;
+        UpdateMouseDrag();
+
+        root.transform.Rotate(rotation);
+        lastMousePos = Input.mousePosition;
+    }
+
+    private void OnMouseUp()
+    {
+        gizmoController.ReleaseController();
+        ReleaseHoverMaterial();
+    }
+
+    protected override void StartMouseDrag()
+    {
+        gizmoController.InitializeController();
+
+        lastMousePos = Input.mousePosition;
+    }
+
+    protected override void UpdateMouseDrag()
+    {
+        mousePos = Input.mousePosition;
+        delta = (mousePos - lastMousePos);
+        rotation = Vector3.zero;
 
         switch (axis)
         {
@@ -35,20 +57,5 @@ public class RotateAxis : Axis
                 rotation.z = -(delta.y + delta.y) * rotationSensitivity;
                 break;
         }
-
-        root.transform.Rotate(rotation);
-        lastMousePos = Input.mousePosition;
-    }
-
-    private void OnMouseUp()
-    {
-        gizmoController.ReleaseController();
-    }
-
-    protected override void StartMouseDrag()
-    {
-        gizmoController.InitializeController();
-
-        lastMousePos = Input.mousePosition;
     }
 }

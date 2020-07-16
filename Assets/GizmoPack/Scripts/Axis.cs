@@ -11,6 +11,7 @@ public class Axis : MonoBehaviour
         zAxis
     };
     public GizmoAxis axis;
+    public Material hoverMaterial;
 
     protected Vector3 lastMousePos;
 
@@ -23,6 +24,19 @@ public class Axis : MonoBehaviour
     protected Vector3 mousePos, scale, worldPosition, delta, pos;
     protected float dist, scaleFactor;
 
+    private Material lastMaterial;
+
+    private void OnMouseEnter()
+    {
+        if (!Input.GetMouseButton(0))
+            UpdateHoverMaterial();
+    }
+
+    private void OnMouseExit()
+    {
+        if(!Input.GetMouseButton(0))
+            ReleaseHoverMaterial();
+    }
 
     protected virtual void InitAxis()
     {
@@ -62,4 +76,16 @@ public class Axis : MonoBehaviour
                 break;
         }
     }
+
+    protected virtual void UpdateHoverMaterial()
+    {
+        lastMaterial = GetComponent<Renderer>().material;
+        GetComponent<Renderer>().material = hoverMaterial;
+    }
+
+    protected virtual void ReleaseHoverMaterial()
+    {
+        GetComponent<Renderer>().material = lastMaterial;
+    }
+
 }

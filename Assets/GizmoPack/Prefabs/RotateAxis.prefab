@@ -107,7 +107,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   axis: 0
+  hoverMaterial: {fileID: 2100000, guid: ddcb045b9e96b6b42945ad80d3f8cc15, type: 2}
   root: {fileID: 0}
+  rotationSensitivity: 0.4
 --- !u!1 &5603003682915130369
 GameObject:
   m_ObjectHideFlags: 0

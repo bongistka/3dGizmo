@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   axis: 0
+  hoverMaterial: {fileID: 2100000, guid: ddcb045b9e96b6b42945ad80d3f8cc15, type: 2}
   root: {fileID: 0}
 --- !u!1 &6240005953056207899
 GameObject:

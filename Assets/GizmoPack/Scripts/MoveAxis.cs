@@ -28,5 +28,6 @@ public class MoveAxis : Axis
     private void OnMouseUp()
     {
         gizmoController.ReleaseController();
+        ReleaseHoverMaterial();
     }
 }

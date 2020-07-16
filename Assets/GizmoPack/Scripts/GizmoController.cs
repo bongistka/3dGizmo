@@ -5,6 +5,7 @@ using UnityEngine;
 public class GizmoController : MonoBehaviour
 {
     public GameObject[] controlledObjects;
+    public bool isGlobal;
     [HideInInspector]
     public Transform gizmoParent;
 

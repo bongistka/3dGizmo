@@ -1026,6 +1026,11 @@ PrefabInstance:
       propertyPath: controlledObjects.Array.data[0]
       value: 
       objectReference: {fileID: 466403374}
+    - target: {fileID: 102776822314088878, guid: 5b13a3bbacfd4934e81da750ba1b166b,
+        type: 3}
+      propertyPath: isGlobal
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 284846792968998900, guid: 5b13a3bbacfd4934e81da750ba1b166b,
         type: 3}
       propertyPath: m_Layer

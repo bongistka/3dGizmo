@@ -306,12 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae255401deb73840bb0f2179289f32e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transformGizmo: {fileID: 19285026649648004, guid: 892ed49dfe47083449c2405505d85957,
-    type: 3}
-  scaleGizmo: {fileID: 2135129198050465321, guid: 003c722db0d3e644bb0c2d67fc79004e,
-    type: 3}
-  rotateGizmo: {fileID: 41654259061228870, guid: 5b13a3bbacfd4934e81da750ba1b166b,
-    type: 3}
+  gizmoData: {fileID: 11400000, guid: ca1e90c5ca928de4a8871dc2d945e78e, type: 2}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

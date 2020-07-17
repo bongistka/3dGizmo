@@ -11,7 +11,7 @@ public class Axis : MonoBehaviour
         zAxis
     };
     public GizmoAxis axis;
-    public Material hoverMaterial;
+    protected MaterialData materialData;
 
     protected Vector3 lastMousePos;
 
@@ -23,8 +23,6 @@ public class Axis : MonoBehaviour
 
     protected Vector3 mousePos, scale, worldPosition, delta, pos;
     protected float dist, scaleFactor;
-
-    protected Material lastMaterial;
 
     private void OnMouseEnter()
     {
@@ -40,6 +38,7 @@ public class Axis : MonoBehaviour
 
     protected virtual void InitAxis()
     {
+        materialData = Resources.Load<MaterialData>("ScriptableObjects/MaterialData");
         scaleToViewpoint = transform.parent.parent.GetComponent<ScaleToViewpoint>();
         root = scaleToViewpoint.transform.parent.gameObject;
         gizmoController = root.GetComponent<GizmoController>();
@@ -79,13 +78,23 @@ public class Axis : MonoBehaviour
 
     protected virtual void UpdateHoverMaterial()
     {
-        lastMaterial = GetComponent<Renderer>().material;
-        GetComponent<Renderer>().material = hoverMaterial;
+        GetComponent<Renderer>().material = materialData.highlightMaterial;
     }
 
     protected virtual void ReleaseHoverMaterial()
     {
-        GetComponent<Renderer>().material = lastMaterial;
+        switch (axis)
+        {
+            case GizmoAxis.xAxis:
+                GetComponent<Renderer>().material = materialData.xMaterial;
+                break;
+            case GizmoAxis.yAxis:
+                GetComponent<Renderer>().material = materialData.yMaterial;
+                break;
+            case GizmoAxis.zAxis:
+                GetComponent<Renderer>().material = materialData.zMaterial;
+                break;
+        }
     }
 
     public virtual void ResetGizmo() { }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a99c7a77eaac5ba4d85d9a384215b0fd, type: 3}
+  m_Name: GizmoData
+  m_EditorClassIdentifier: 
+  transformGizmo: {fileID: 19285026649648004, guid: 892ed49dfe47083449c2405505d85957,
+    type: 3}
+  scaleGizmo: {fileID: 41654259061228870, guid: 5b13a3bbacfd4934e81da750ba1b166b,
+    type: 3}
+  rotateGizmo: {fileID: 2135129198050465321, guid: 003c722db0d3e644bb0c2d67fc79004e,
+    type: 3}

@@ -69,15 +69,27 @@ public class ScaleAxis : Axis
 
     protected override void UpdateHoverMaterial()
     {
-        lastMaterial = GetComponent<Renderer>().material;
-        GetComponent<Renderer>().material = hoverMaterial;
-        axisScaleObject.GetComponent<Renderer>().material = hoverMaterial;
+        GetComponent<Renderer>().material = materialData.highlightMaterial;
+        axisScaleObject.GetComponent<Renderer>().material = materialData.highlightMaterial;
     }
 
     protected override void ReleaseHoverMaterial()
     {
-        GetComponent<Renderer>().material = lastMaterial;
-        axisScaleObject.GetComponent<Renderer>().material = lastMaterial;
+        switch (axis)
+        {
+            case GizmoAxis.xAxis:
+                GetComponent<Renderer>().material = materialData.xMaterial;
+                axisScaleObject.GetComponent<Renderer>().material = materialData.xMaterial;
+                break;
+            case GizmoAxis.yAxis:
+                GetComponent<Renderer>().material = materialData.yMaterial;
+                axisScaleObject.GetComponent<Renderer>().material = materialData.yMaterial;
+                break;
+            case GizmoAxis.zAxis:
+                GetComponent<Renderer>().material = materialData.zMaterial;
+                axisScaleObject.GetComponent<Renderer>().material = materialData.zMaterial;
+                break;
+        }
     }
 
     public override void ResetGizmo()

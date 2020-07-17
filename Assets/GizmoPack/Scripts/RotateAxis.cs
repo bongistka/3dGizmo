@@ -58,4 +58,11 @@ public class RotateAxis : Axis
                 break;
         }
     }
+
+    public override void ResetGizmo()
+    {
+        root.transform.rotation = Quaternion.identity;
+        foreach (GameObject controlledObject in gizmoController.controlledObjects)
+            controlledObject.transform.rotation = Quaternion.identity;
+    }
 }

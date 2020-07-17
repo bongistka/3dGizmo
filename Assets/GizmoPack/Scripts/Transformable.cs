@@ -31,6 +31,10 @@ public class Transformable : MonoBehaviour
         {
             InitGizmo(scaleGizmo, this.gameObject);
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            currentGizmo.GetComponent<GizmoController>().ResetGizmo();
+        }
     }
 
     public void InitGizmo(GameObject gizmoObject, GameObject controlledObject)

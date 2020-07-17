@@ -88,4 +88,5 @@ public class Axis : MonoBehaviour
         GetComponent<Renderer>().material = lastMaterial;
     }
 
+    public virtual void ResetGizmo() { }
 }

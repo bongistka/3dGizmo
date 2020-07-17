@@ -30,4 +30,11 @@ public class MoveAxis : Axis
         gizmoController.ReleaseController();
         ReleaseHoverMaterial();
     }
+
+    public override void ResetGizmo()
+    {
+        root.transform.position = Vector3.zero;
+        foreach (GameObject controlledObject in gizmoController.controlledObjects)
+            controlledObject.transform.position = Vector3.zero;
+    }
 }

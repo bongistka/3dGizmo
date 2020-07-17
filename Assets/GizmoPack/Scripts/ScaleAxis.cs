@@ -79,4 +79,11 @@ public class ScaleAxis : Axis
         GetComponent<Renderer>().material = lastMaterial;
         axisScaleObject.GetComponent<Renderer>().material = lastMaterial;
     }
+
+    public override void ResetGizmo()
+    {
+        root.transform.localScale = Vector3.one;
+        foreach (GameObject controlledObject in gizmoController.controlledObjects)
+            controlledObject.transform.localScale = Vector3.one;
+    }
 }

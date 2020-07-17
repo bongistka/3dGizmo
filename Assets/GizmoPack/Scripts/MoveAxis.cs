@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class MoveAxis : Axis
 {
-    
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         InitAxis();
     }

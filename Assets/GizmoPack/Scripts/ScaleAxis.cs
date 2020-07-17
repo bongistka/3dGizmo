@@ -8,8 +8,7 @@ public class ScaleAxis : Axis
     private Transform axisScaleObject;
     private float axisLength = 0.01f;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         InitAxis();
         axisScaleObject = transform.parent.GetChild(0);
@@ -69,24 +68,22 @@ public class ScaleAxis : Axis
 
     protected override void UpdateHoverMaterial()
     {
-        GetComponent<Renderer>().material = materialData.highlightMaterial;
+        base.UpdateHoverMaterial();
         axisScaleObject.GetComponent<Renderer>().material = materialData.highlightMaterial;
     }
 
     protected override void ReleaseHoverMaterial()
     {
+        base.ReleaseHoverMaterial();
         switch (axis)
         {
             case GizmoAxis.xAxis:
-                GetComponent<Renderer>().material = materialData.xMaterial;
                 axisScaleObject.GetComponent<Renderer>().material = materialData.xMaterial;
                 break;
             case GizmoAxis.yAxis:
-                GetComponent<Renderer>().material = materialData.yMaterial;
                 axisScaleObject.GetComponent<Renderer>().material = materialData.yMaterial;
                 break;
             case GizmoAxis.zAxis:
-                GetComponent<Renderer>().material = materialData.zMaterial;
                 axisScaleObject.GetComponent<Renderer>().material = materialData.zMaterial;
                 break;
         }
@@ -97,5 +94,11 @@ public class ScaleAxis : Axis
         root.transform.localScale = Vector3.one;
         foreach (GameObject controlledObject in gizmoController.controlledObjects)
             controlledObject.transform.localScale = Vector3.one;
+    }
+
+    public override void DisableAxis()
+    {
+        axisScaleObject.GetComponent<Renderer>().material = materialData.frozenMaterial;
+        base.DisableAxis();
     }
 }

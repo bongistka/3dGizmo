@@ -11,12 +11,13 @@ public class Axis : MonoBehaviour
         zAxis
     };
     public GizmoAxis axis;
-    protected MaterialData materialData;
 
     protected Vector3 lastMousePos;
 
     [HideInInspector]
     public GameObject root;
+    [HideInInspector]
+    public MaterialData materialData;
 
     protected ScaleToViewpoint scaleToViewpoint;
     protected GizmoController gizmoController;
@@ -98,4 +99,14 @@ public class Axis : MonoBehaviour
     }
 
     public virtual void ResetGizmo() { }
+
+    public virtual void DisableAxis()
+    {
+        GetComponent<Renderer>().material = materialData.frozenMaterial;
+        foreach (Collider c in GetComponents<Collider>())
+        {
+            c.enabled = false;
+        }
+        enabled = false;
+    }
 }

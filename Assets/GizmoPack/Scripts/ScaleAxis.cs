@@ -66,4 +66,17 @@ public class ScaleAxis : Axis
         
         gizmoController.gizmoParent.transform.localScale = scale;
     }
+
+    protected override void UpdateHoverMaterial()
+    {
+        lastMaterial = GetComponent<Renderer>().material;
+        GetComponent<Renderer>().material = hoverMaterial;
+        axisScaleObject.GetComponent<Renderer>().material = hoverMaterial;
+    }
+
+    protected override void ReleaseHoverMaterial()
+    {
+        GetComponent<Renderer>().material = lastMaterial;
+        axisScaleObject.GetComponent<Renderer>().material = lastMaterial;
+    }
 }

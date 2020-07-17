@@ -24,7 +24,7 @@ public class Axis : MonoBehaviour
     protected Vector3 mousePos, scale, worldPosition, delta, pos;
     protected float dist, scaleFactor;
 
-    private Material lastMaterial;
+    protected Material lastMaterial;
 
     private void OnMouseEnter()
     {
